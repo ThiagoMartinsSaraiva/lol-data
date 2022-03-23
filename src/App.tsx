@@ -42,7 +42,6 @@ function App() {
   useEffect(() => {
     if (version) {
       getAll({ version, locale: 'pt_BR' }).then((data) => {
-        console.log(data)
         setChampions(data)
       })
     }
