@@ -32,9 +32,9 @@ body {
   place-items: center;
 }
 
-.champion-card {
-  cursor: pointer;
-  border-radius: 4px;
+.image-container img {
+  border-radius: 50%;
+  display: block;
 }
 
 .image-container:hover {
@@ -45,11 +45,6 @@ body {
 
 .image-container:hover img {
   filter: brightness(1.2);
-}
-
-.image-container img {
-  border-radius: 50%;
-  display: block;
 }
 
 .champion-name {

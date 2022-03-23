@@ -57,7 +57,6 @@ function App() {
               <img
                 src={`https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/${champions[championKey].image.full}`}
                 loading="lazy"
-                style={{ display: 'block' }}
               />
             </div>
             <div className="champion-name">
