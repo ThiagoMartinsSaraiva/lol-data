@@ -1,0 +1,3 @@
+https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/pt_br/v1/champions/
+http://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json
+https://riot-api-libraries.readthedocs.io/en/latest/ddragon.html

@@ -1,0 +1,154 @@
+body {
+  font-family: 'Roboto';
+  margin: 0;
+  padding: 0;
+  background: hsl(222deg 14% 11%);
+}
+
+.champions-container {
+  filter: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+  justify-content: space-between;
+  gap: 20px;
+  padding: 40px;
+  width: 80%;
+  margin: calc(15vh - 80px) auto;
+  background: hsl(222deg 33% 4%);
+  border-radius: 8px;
+}
+
+.champions-container::after {
+  content: '';
+  flex: auto;
+}
+
+.image-container {
+  transition: all 0.3s;
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.champion-card {
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.image-container:hover {
+  transform: scale(1.1);
+  background: linear-gradient(0deg, blue, #2b6, gold, #b23);
+  animation: colorfull-border 1s infinite backwards, pulse 1s infinite linear;
+}
+
+.image-container:hover img {
+  filter: brightness(1.2);
+}
+
+.image-container img {
+  border-radius: 50%;
+  display: block;
+}
+
+.champion-name {
+  padding: 4px 0;
+  margin-top: 15px;
+}
+
+.champion-name p {
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+}
+
+@keyframes colorfull-border {
+  0% {
+    background: linear-gradient(0deg, blue, #2b6, gold, #b23);
+  }
+  5% {
+    background: linear-gradient(18deg, blue, #2b6, gold, #b23);
+  }
+  10% {
+    background: linear-gradient(36deg, blue, #2b6, gold, #b23);
+  }
+  15% {
+    background: linear-gradient(54deg, blue, #2b6, gold, #b23);
+  }
+  20% {
+    background: linear-gradient(72deg, blue, #2b6, gold, #b23);
+  }
+  25% {
+    background: linear-gradient(90deg, blue, #2b6, gold, #b23);
+  }
+  30% {
+    background: linear-gradient(108deg, blue, #2b6, gold, #b23);
+  }
+  35% {
+    background: linear-gradient(126deg, blue, #2b6, gold, #b23);
+  }
+  40% {
+    background: linear-gradient(144deg, blue, #2b6, gold, #b23);
+  }
+  45% {
+    background: linear-gradient(162deg, blue, #2b6, gold, #b23);
+  }
+  50% {
+    background: linear-gradient(180deg, blue, #2b6, gold, #b23);
+  }
+  55% {
+    background: linear-gradient(198deg, blue, #2b6, gold, #b23);
+  }
+  60% {
+    background: linear-gradient(216deg, blue, #2b6, gold, #b23);
+  }
+  65% {
+    background: linear-gradient(234deg, blue, #2b6, gold, #b23);
+  }
+  70% {
+    background: linear-gradient(252deg, blue, #2b6, gold, #b23);
+  }
+  75% {
+    background: linear-gradient(270deg, blue, #2b6, gold, #b23);
+  }
+  80% {
+    background: linear-gradient(288deg, blue, #2b6, gold, #b23);
+  }
+  85% {
+    background: linear-gradient(306deg, blue, #2b6, gold, #b23);
+  }
+  90% {
+    background: linear-gradient(324deg, blue, #2b6, gold, #b23);
+  }
+  95% {
+    background: linear-gradient(342deg, blue, #2b6, gold, #b23);
+  }
+  100% {
+    background: linear-gradient(360deg, blue, #2b6, gold, #b23);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(120, 120, 120, 0.7),
+      0 0 0 0 rgba(120, 120, 120, 0.7);
+  }
+
+  40% {
+    box-shadow: 0 0 0 10px rgba(120, 120, 120, 0),
+      0 0 0 0 rgba(120, 120, 120, 0.7);
+  }
+
+  80% {
+    box-shadow: 0 0 0 10px rgba(120, 120, 120, 0),
+      0 0 0 10px rgba(120, 120, 120, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(120, 120, 120, 0),
+      0 0 0 10px rgba(120, 120, 120, 0);
+  }
+}
