@@ -60,6 +60,22 @@ body {
   color: #fff;
 }
 
+.champion-profile-image {
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.champion-profile-image img {
+  border-radius: 50%;
+}
+
+.image-splash-art {
+  width: 20%;
+}
+
 @keyframes colorfull-border {
   0% {
     background: linear-gradient(0deg, blue, #2b6, gold, #b23);
