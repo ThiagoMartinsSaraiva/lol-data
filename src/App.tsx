@@ -8,6 +8,7 @@ import Modal from 'react-modal'
 Modal.setAppElement('#root')
 
 interface ListItemChampion {
+  id: string
   name: string
   key: string
   image: ListItemChampionImage
@@ -15,10 +16,6 @@ interface ListItemChampion {
 
 interface ListItemChampionImage {
   full: string
-}
-
-interface ChampionList {
-  [champion: string]: ListItemChampion
 }
 
 interface CurrentChampion {
@@ -73,7 +70,7 @@ const skillIndexToKeyboardCode: { [key: number]: string } = {
 }
 
 function App() {
-  const [champions, setChampions] = useState<ChampionList>({} as ChampionList)
+  const [champions, setChampions] = useState<ListItemChampion[]>([])
   const [isChampionModalOpen, setIsChampionModalOpen] = useState(false)
   const [currentChampion, setCurrentChampion] = useState<CurrentChampion>(
     {} as CurrentChampion,
@@ -83,7 +80,8 @@ function App() {
   useEffect(() => {
     if (version) {
       getAll({ version, locale: 'pt_BR' }).then((data) => {
-        setChampions(data)
+        const formattedChampions = Object.keys(data).map((key) => data[key])
+        setChampions(formattedChampions)
       })
     }
   }, [version])
@@ -104,20 +102,20 @@ function App() {
   return (
     <>
       <section className="champions-container">
-        {Object.keys(champions).map((championKey) => (
+        {champions.map((champion) => (
           <div
-            key={championKey}
+            key={champion.key}
             className="champion-card"
-            onClick={() => handleOpenChampionModal(championKey)}
+            onClick={() => handleOpenChampionModal(champion.id)}
           >
             <div className="image-container">
               <img
-                src={`https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/${champions[championKey].image.full}`}
+                src={`https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/${champion.image.full}`}
                 loading="lazy"
               />
             </div>
             <div className="champion-name">
-              <p>{champions[championKey].name}</p>
+              <p>{champion.name}</p>
             </div>
           </div>
         ))}
