@@ -4,63 +4,13 @@ import { useVersion } from './contexts/version'
 import { getAll, getChampion } from './services/champion'
 
 import Modal from 'react-modal'
+import {
+  IChampionList,
+  ICurrentChampion,
+  ICurrentChampionSkins,
+} from './interfaces'
 
 Modal.setAppElement('#root')
-
-interface ListItemChampion {
-  id: string
-  name: string
-  key: string
-  image: ListItemChampionImage
-}
-
-interface ListItemChampionImage {
-  full: string
-}
-
-interface CurrentChampion {
-  name: string
-  key: string
-  title: string
-  skins: CurrentChampionSkins[]
-  allytips: string[]
-  enemytips: string[]
-  tags: string[]
-  partype: string
-  info: CurrentChampionStats
-  passive: Omit<CurrentChampionSpells, 'id' | 'cooldown' | 'cost'>
-  spells: CurrentChampionSpells[]
-  image: {
-    full: string
-  }
-}
-interface CurrentChampionSkins {
-  id: string
-  num: number
-  name: string
-  chromas: boolean
-}
-
-interface CurrentChampionStats {
-  attack: number
-  defense: number
-  magic: number
-  difficulty: number
-}
-
-interface CurrentChampionSpells {
-  id: string
-  name: string
-  description: string
-  cooldown: number[]
-  cost: number[]
-  image: CurrentChampionSpellImage
-}
-
-interface CurrentChampionSpellImage {
-  full: string
-  sprite: string
-}
 
 const skillIndexToKeyboardCode: { [key: number]: string } = {
   0: 'Q',
@@ -70,10 +20,10 @@ const skillIndexToKeyboardCode: { [key: number]: string } = {
 }
 
 function App() {
-  const [champions, setChampions] = useState<ListItemChampion[]>([])
+  const [champions, setChampions] = useState<IChampionList[]>([])
   const [isChampionModalOpen, setIsChampionModalOpen] = useState(false)
-  const [currentChampion, setCurrentChampion] = useState<CurrentChampion>(
-    {} as CurrentChampion,
+  const [currentChampion, setCurrentChampion] = useState<ICurrentChampion>(
+    {} as ICurrentChampion,
   )
   const { version } = useVersion()
 
@@ -212,7 +162,7 @@ function App() {
                     <div>
                       <p>Skins</p>
                       {currentChampion.skins.map(
-                        (skin: CurrentChampionSkins) => (
+                        (skin: ICurrentChampionSkins) => (
                           <div key={skin.id}>
                             <img
                               src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${currentChampion.name}_${skin.num}.jpg`}

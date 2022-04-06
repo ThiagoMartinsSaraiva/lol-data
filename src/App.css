@@ -35,6 +35,7 @@ body {
 .image-container img {
   border-radius: 50%;
   display: block;
+  transition: filter 0.5s;
 }
 
 .image-container:hover {
