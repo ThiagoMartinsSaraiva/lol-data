@@ -14,6 +14,7 @@ export interface ICurrentChampion {
     full: string
   }
 }
+
 export interface ICurrentChampionSkins {
   id: string
   num: number
