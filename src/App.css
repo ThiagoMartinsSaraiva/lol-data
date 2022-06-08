@@ -35,6 +35,7 @@ body {
 .image-container img {
   border-radius: 50%;
   display: block;
+  transition: filter 0.5s;
 }
 
 .image-container:hover {
@@ -58,6 +59,22 @@ body {
   font-weight: 400;
   text-align: center;
   color: #fff;
+}
+
+.champion-profile-image {
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.champion-profile-image img {
+  border-radius: 50%;
+}
+
+.image-splash-art {
+  width: 20%;
 }
 
 @keyframes colorfull-border {

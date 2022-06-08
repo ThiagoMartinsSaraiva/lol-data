@@ -7,19 +7,19 @@ import {
 } from 'react'
 import { getLatest } from '../services/versions'
 
-interface VersionContextData {
+interface IVersionContextData {
   version: string
 }
 
-interface VersionProviderProps {
+interface IVersionProviderProps {
   children: ReactNode
 }
 
-const VersionContext = createContext<VersionContextData>(
-  {} as VersionContextData,
+const VersionContext = createContext<IVersionContextData>(
+  {} as IVersionContextData,
 )
 
-export function VersionProvider({ children }: VersionProviderProps) {
+export function VersionProvider({ children }: IVersionProviderProps) {
   const [version, setVersion] = useState('')
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export function VersionProvider({ children }: VersionProviderProps) {
         setVersion(latestVersion)
       })
     }
-  })
+  }, [])
 
   return (
     <VersionContext.Provider value={{ version }}>
@@ -42,7 +42,7 @@ export function VersionProvider({ children }: VersionProviderProps) {
   )
 }
 
-export function useVersion(): VersionContextData {
+export function useVersion(): IVersionContextData {
   const context = useContext(VersionContext)
 
   return context
