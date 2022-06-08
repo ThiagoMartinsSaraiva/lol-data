@@ -64,7 +64,7 @@ function App() {
           >
             <div className="image-container">
               <img
-                src={`https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/${champion.image.full}`}
+                src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.image.full}`}
                 loading="lazy"
                 alt={`${champion.name} profile image`}
               />
@@ -86,7 +86,7 @@ function App() {
             <div className="modal-header">
               <div className="champion-profile-image">
                 <img
-                  src={`https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/${currentChampion.image.full}`}
+                  src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${currentChampion.image.full}`}
                   loading="lazy"
                 />
               </div>
@@ -118,7 +118,7 @@ function App() {
                       <div>
                         <p>{currentChampion.passive.name}</p>
                         <img
-                          src={`https://ddragon.leagueoflegends.com/cdn/12.5.1/img/passive/${currentChampion.passive.image.full}`}
+                          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${currentChampion.passive.image.full}`}
                           loading="lazy"
                         />
                         <p>{currentChampion.passive.description}</p>
@@ -142,7 +142,7 @@ function App() {
                         <div key={spell.name}>
                           <p>{spell.name}</p>
                           <img
-                            src={`https://ddragon.leagueoflegends.com/cdn/12.5.1/img/spell/${spell.image.full}`}
+                            src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${spell.image.full}`}
                             loading="lazy"
                           />
                           <p>{spell.description}</p>
@@ -170,7 +170,7 @@ function App() {
                         (skin: ICurrentChampionSkins) => (
                           <div key={skin.id}>
                             <img
-                              src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${currentChampion.name}_${skin.num}.jpg`}
+                              src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${currentChampion.id}_${skin.num}.jpg`}
                               loading="lazy"
                               className="image-splash-art"
                             />
