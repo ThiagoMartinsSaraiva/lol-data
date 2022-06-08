@@ -62,6 +62,7 @@ function App() {
               <img
                 src={`https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/${champion.image.full}`}
                 loading="lazy"
+                alt={`${champion.name} profile image`}
               />
             </div>
             <div className="champion-name">
