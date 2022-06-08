@@ -28,6 +28,10 @@ function App() {
   const { version } = useVersion()
 
   useEffect(() => {
+    localStorage.clear()
+  }, [])
+
+  useEffect(() => {
     if (version) {
       getAll({ version, locale: 'pt_BR' }).then((data) => {
         const formattedChampions = Object.keys(data).map((key) => data[key])
