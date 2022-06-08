@@ -7,3 +7,6 @@ https://ddragon.leagueoflegends.com/cdn/img/champion/splash/KogMaw_5.jpg
 
 to get the video
 https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0103/ability_0103_R1.mp4
+
+sprite
+https://ddragon.leagueoflegends.com/cdn/12.5.1/img/sprite/champion0.png

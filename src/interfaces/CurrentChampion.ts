@@ -1,5 +1,6 @@
 export interface ICurrentChampion {
   name: string
+  id: string
   key: string
   title: string
   skins: ICurrentChampionSkins[]
