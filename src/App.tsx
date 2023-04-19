@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import './App.scss'
 import { useVersion } from './contexts/version'
 import { getAll, getChampion } from './services/champion'
 
@@ -82,7 +82,7 @@ function App() {
         className="react-modal-content"
       >
         {Object.keys(currentChampion).length > 0 && (
-          <>
+          <section id="modal-section">
             <div className="modal-header">
               <div className="champion-profile-image">
                 <img
@@ -185,7 +185,7 @@ function App() {
                 </>
               )}
             </div>
-          </>
+          </section>
         )}
       </Modal>
     </>
