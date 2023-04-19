@@ -14,7 +14,7 @@ export const purifyHtml = (text: string) => {
   };
   walk(doc.body)
 
-  const htmlEntities = {
+  const htmlEntities: any = {
     "&amp;": "&",
     "&lt;": "<",
     "&gt;": ">",
