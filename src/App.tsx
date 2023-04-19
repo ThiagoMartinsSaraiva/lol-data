@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import './App.scss'
 import { useVersion } from './contexts/version'
 import { getAll, getChampion } from './services/champion'
 
@@ -9,6 +9,7 @@ import {
   ICurrentChampion,
   ICurrentChampionSkins,
 } from './interfaces'
+import { purifyHtml } from './utils/purifyHtml'
 
 Modal.setAppElement('#root')
 
@@ -19,12 +20,41 @@ const skillIndexToKeyboardCode: { [key: number]: string } = {
   3: 'R',
 }
 
+const initialCurrentChampion: ICurrentChampion = {
+  name: '',
+  id: '',
+  key: '',
+  title: '',
+  skins: [],
+  allytips: [],
+  enemytips: [],
+  tags: [],
+  partype: '',
+  info: { 
+    attack: 0,
+    defense: 0,
+    magic: 0,
+    difficulty: 0, 
+  },
+  passive: {
+    name: '',
+    description: '',
+    image: {
+      full: '',
+      sprite: '',
+    }
+  },
+  spells: [],
+  image: {
+    full: '',
+  },
+}
+
 function App() {
   const [champions, setChampions] = useState<IChampionList[]>([])
   const [isChampionModalOpen, setIsChampionModalOpen] = useState(false)
-  const [currentChampion, setCurrentChampion] = useState<ICurrentChampion>(
-    {} as ICurrentChampion,
-  )
+  const [currentChampion, setCurrentChampion] = useState<ICurrentChampion>(initialCurrentChampion)
+
   const { version } = useVersion()
 
   useEffect(() => {
@@ -82,7 +112,7 @@ function App() {
         className="react-modal-content"
       >
         {Object.keys(currentChampion).length > 0 && (
-          <>
+          <section id="modal-section">
             <div className="modal-header">
               <div className="champion-profile-image">
                 <img
@@ -121,7 +151,7 @@ function App() {
                           src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${currentChampion.passive.image.full}`}
                           loading="lazy"
                         />
-                        <p>{currentChampion.passive.description}</p>
+                        <p>{purifyHtml(currentChampion.passive.description)}</p>
                         <div>
                           <video
                             src={`https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${currentChampion.key.padStart(
@@ -145,7 +175,7 @@ function App() {
                             src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${spell.image.full}`}
                             loading="lazy"
                           />
-                          <p>{spell.description}</p>
+                          <p>{purifyHtml(spell.description)}</p>
                           <div>
                             <video
                               src={`https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${currentChampion.key.padStart(
@@ -164,28 +194,30 @@ function App() {
                         </div>
                       ))}
                     </div>
-                    <div>
+                    <section>
                       <p>Skins</p>
-                      {currentChampion.skins.map(
-                        (skin: ICurrentChampionSkins) => (
-                          <div key={skin.id}>
-                            <img
-                              src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${currentChampion.id}_${skin.num}.jpg`}
-                              loading="lazy"
-                              className="image-splash-art"
-                            />
-                            {skin.name === 'default'
-                              ? currentChampion.name
-                              : skin.name}
-                          </div>
-                        ),
-                      )}
-                    </div>
+                      <div className='skins-container'>
+                        {currentChampion.skins.map(
+                          (skin: ICurrentChampionSkins) => (
+                            <div key={skin.id} className='skin-content'>
+                              <img
+                                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${currentChampion.id}_${skin.num}.jpg`}
+                                loading="lazy"
+                                className="image-splash-art"
+                              />
+                              <p>{skin.name === 'default'
+                                ? currentChampion.name
+                                : skin.name}</p>
+                            </div>
+                          ),
+                        )}
+                      </div>
+                    </section>
                   </div>
                 </>
               )}
             </div>
-          </>
+          </section>
         )}
       </Modal>
     </>
